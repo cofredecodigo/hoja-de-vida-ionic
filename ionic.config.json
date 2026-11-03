@@ -1,0 +1,7 @@
+{
+  "name": "Hoja de Vida",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

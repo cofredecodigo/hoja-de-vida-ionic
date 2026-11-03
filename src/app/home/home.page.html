@@ -1,0 +1,176 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Hoja de Vida</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="encabezado">
+    @if (datos.foto) {
+      <img class="foto" [src]="datos.foto" [alt]="'Foto de ' + datos.nombre" />
+    } @else {
+      <div class="foto iniciales">{{ iniciales }}</div>
+    }
+
+    <h1>{{ datos.nombre }}</h1>
+    <p>{{ datos.profesion }}</p>
+
+    <ion-button color="light" (click)="contactar()">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      Contactar
+    </ion-button>
+  </section>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="person-outline" color="primary"></ion-icon>
+        Perfil profesional
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>{{ datos.perfil }}</ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="call-outline" color="primary"></ion-icon>
+        Contacto
+      </ion-card-title>
+    </ion-card-header>
+    <ion-list lines="none">
+      <ion-item [href]="'mailto:' + datos.correo" [detail]="false">
+        <ion-icon slot="start" name="mail-outline" color="primary"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ datos.correo }}</ion-label>
+      </ion-item>
+      <ion-item [href]="'tel:' + datos.telefono" [detail]="false">
+        <ion-icon slot="start" name="call-outline" color="primary"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ datos.telefono }}</ion-label>
+      </ion-item>
+      @if (datos.linkedin) {
+        <ion-item [href]="'https://' + datos.linkedin" [detail]="false">
+          <ion-icon slot="start" name="logo-linkedin" color="primary"></ion-icon>
+          <ion-label class="ion-text-wrap">{{ datos.linkedin }}</ion-label>
+        </ion-item>
+      }
+      <ion-item>
+        <ion-icon slot="start" name="location-outline" color="primary"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ datos.ciudad }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="school-outline" color="primary"></ion-icon>
+        Educación
+      </ion-card-title>
+    </ion-card-header>
+    <ion-list lines="none">
+      @for (estudio of datos.estudios; track estudio.titulo) {
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>{{ estudio.titulo }}</h3>
+            <p>{{ estudio.institucion }}</p>
+            <p>{{ estudio.fechas }} · {{ estudio.detalle }}</p>
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="briefcase-outline" color="primary"></ion-icon>
+        Experiencia
+      </ion-card-title>
+    </ion-card-header>
+    <ion-list lines="none">
+      @for (experiencia of datos.experiencias; track experiencia.cargo) {
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h3>{{ experiencia.cargo }}</h3>
+            <p>{{ experiencia.empresa }} · {{ experiencia.fechas }}</p>
+            <p>{{ experiencia.descripcion }}</p>
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="construct-outline" color="primary"></ion-icon>
+        Habilidades técnicas
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @for (habilidad of datos.habilidadesTecnicas; track habilidad) {
+        <ion-chip color="primary">{{ habilidad }}</ion-chip>
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="people-outline" color="primary"></ion-icon>
+        Habilidades blandas
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @for (habilidad of datos.habilidadesBlandas; track habilidad) {
+        <ion-chip color="primary">{{ habilidad }}</ion-chip>
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="language-outline" color="primary"></ion-icon>
+        Idiomas
+      </ion-card-title>
+    </ion-card-header>
+    <ion-list lines="none">
+      @for (idioma of datos.idiomas; track idioma.nombre) {
+        <ion-item>
+          <ion-label>{{ idioma.nombre }}</ion-label>
+          <ion-badge slot="end" color="primary">{{ idioma.nivel }}</ion-badge>
+        </ion-item>
+      }
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="checkmark-circle-outline" color="primary"></ion-icon>
+        Información adicional
+      </ion-card-title>
+    </ion-card-header>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Disponibilidad</h3>
+          <p>{{ datos.disponibilidad }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Modalidad de trabajo</h3>
+          <p>{{ datos.modalidad }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>Referencias</h3>
+          <p>{{ datos.referencias }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

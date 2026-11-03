@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Hoja de Vida</string>
+    <string name="title_activity_main">Hoja de Vida</string>
+    <string name="package_name">com.universidad.hojadevida</string>
+    <string name="custom_url_scheme">com.universidad.hojadevida</string>
+</resources>

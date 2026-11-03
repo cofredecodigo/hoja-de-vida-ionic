@@ -1,0 +1,51 @@
+ion-content {
+  --background: #f2f4f7;
+}
+
+.encabezado {
+  padding: 24px 16px;
+  text-align: center;
+  color: #ffffff;
+  background: var(--ion-color-primary);
+
+  h1 {
+    margin: 12px 0 4px;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 12px;
+    font-size: 16px;
+  }
+}
+
+.foto {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.iniciales {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  background: #ffffff;
+}
+
+ion-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+ion-label h3 {
+  font-weight: 600;
+}
